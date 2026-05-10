@@ -63,7 +63,7 @@ export default function AIChat() {
       const firstUserIdx = apiMessages.findIndex((m) => m.role === "user");
       const trimmedMessages = firstUserIdx >= 0 ? apiMessages.slice(firstUserIdx) : apiMessages;
 
-      const response = await fetch("https://portfolio-backend-z38z.onrender.com", {
+      const response = await fetch("https://portfolio-backend-z38z.onrender.com/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
