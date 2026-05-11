@@ -22,34 +22,33 @@ export default function Contact() {
 
     setStatus({ state: "loading", msg: "" });
 
-    // If you have a backend, replace the URL below.
-    // For now, we simulate a successful send (remove the timeout and use real fetch when backend is ready).
-    const backendUrl = process.env.REACT_APP_BACKEND_URL;
+    try {
+      // Sending data to Web3Forms
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          // 👇 REPLACE WITH YOUR ACTUAL WEB3FORMS ACCESS KEY 👇
+          access_key: "4d1858e8-98ec-4975-8b12-1ba1cf1e3ad5",
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
+      });
 
-    if (backendUrl) {
-      try {
-        const res = await fetch(`${backendUrl}/api/contact`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        });
-        if (!res.ok) {
-          const errData = await res.json().catch(() => ({}));
-          throw new Error(errData.detail || "Failed to send.");
-        }
-        setStatus({ state: "ok", msg: "Message sent. I'll get back to you soon." });
-        setForm({ name: "", email: "", message: "" });
-      } catch (err) {
-        setStatus({ state: "error", msg: err.message || "Failed to send. Please try again." });
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus({ state: "ok", msg: "Message sent! I'll get back to you soon." });
+        setForm({ name: "", email: "", message: "" }); // Clear the form
+      } else {
+        setStatus({ state: "error", msg: data.message || "Failed to send. Please try again." });
       }
-    } else {
-      // No backend configured — open mailto as fallback
-      const mailto = `mailto:abnel@portfolio.dev?subject=Portfolio%20Inquiry%20from%20${encodeURIComponent(
-        form.name
-      )}&body=${encodeURIComponent(form.message)}`;
-      window.open(mailto, "_blank");
-      setStatus({ state: "ok", msg: "Opening your email client to send the message." });
-      setForm({ name: "", email: "", message: "" });
+    } catch (err) {
+      setStatus({ state: "error", msg: "Network error. Please try again later." });
     }
   };
 
