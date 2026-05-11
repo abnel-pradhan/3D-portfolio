@@ -78,7 +78,7 @@ export default function Contact() {
                 href="mailto:abnel@portfolio.dev"
                 className="text-white hover:text-[color:var(--accent)] transition-colors"
               >
-                abnel@portfolio.dev
+                abnelpradhan7@gmail.com
               </a>
             </div>
             <div className="flex items-center justify-between border-b border-white/10 pb-3">

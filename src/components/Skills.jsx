@@ -4,30 +4,30 @@ import { Float, Text } from "@react-three/drei";
 import * as THREE from "three";
 import { motion } from "framer-motion";
 
+// ADDED 'API' AND 'FULL STACK' TO THE 3D ORBIT
 const SKILL_WORDS = [
-  { text: "REACT", color: "#ffffff" },
-  { text: "NEXT.JS", color: "#A1A1AA" },
-  { text: "NODE", color: "#ffffff" },
-  { text: "MONGO", color: "#A1A1AA" },
+  { text: "REACT.JS", color: "#ffffff" },
+  { text: "PYTHON", color: "#A1A1AA" },
+  { text: "NODE.JS", color: "#ffffff" },
+  { text: "FLASK", color: "#A1A1AA" },
+  { text: "FULL STACK", color: "#FF3300" }, 
   { text: "TAILWIND", color: "#ffffff" },
-  { text: "AI", color: "#FF3300" },
-  { text: "GIT", color: "#A1A1AA" },
-  { text: "JS", color: "#ffffff" },
-  { text: "VIDEO", color: "#FF3300" },
-  { text: "THREE.JS", color: "#ffffff" },
+  { text: "AI AGENTS", color: "#FF3300" },
+  { text: "API", color: "#A1A1AA" },
+  { text: "GITHUB", color: "#A1A1AA" },
+  { text: "VERCEL", color: "#ffffff" },
+  { text: "VISION", color: "#FF3300" },
+  { text: "VIDEO", color: "#ffffff" },
 ];
 
-// True 3D Text that orbits around the center
 function OrbitWord({ text, color, radius, speed, offset, y }) {
   const ref = useRef();
 
   useFrame((state) => {
     const t = state.clock.elapsedTime * speed + offset;
     if (ref.current) {
-      // Move in a circle
       ref.current.position.x = Math.cos(t) * radius;
       ref.current.position.z = Math.sin(t) * radius;
-      // Make the text face outward as it spins
       ref.current.rotation.y = -t + Math.PI / 2;
     }
   });
@@ -77,16 +77,16 @@ function Scene() {
   );
 }
 
+// UPDATED LEFT COLUMN LIST
 const SKILL_LIST = [
-  "JavaScript (ES6+)",
-  "React & Next.js",
-  "Tailwind CSS",
-  "Node.js & Express",
-  "SQL / NoSQL",
-  "Git & DevOps",
-  "Three.js / R3F",
-  "Creative AI Tools",
-  "Video Editing",
+  "Full-Stack Web Development",
+  "API Design & Integration",
+  "React.js & Tailwind CSS",
+  "Python, Flask & Node.js",
+  "Computer Vision (MediaPipe)",
+  "AI Agent Development",
+  "Git, GitHub & Vercel",
+  "Video Editing & Content Creation",
 ];
 
 export default function Skills({ isMobile }) {
@@ -138,6 +138,19 @@ export default function Skills({ isMobile }) {
             ▲ ORBITAL/STACK
           </div>
           
+          {/* STATIC TEXT OVERLAY ON HOVER */}
+          <div className="absolute inset-0 z-10 pointer-events-none flex flex-wrap items-center justify-center gap-3 p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {SKILL_WORDS.map((w) => (
+              <span
+                key={w.text}
+                className="font-display text-xs md:text-sm uppercase tracking-widest bg-black/40 px-2 py-1 backdrop-blur-sm"
+                style={{ color: w.color }}
+              >
+                {w.text}
+              </span>
+            ))}
+          </div>
+
           <Canvas
             dpr={isMobile ? 1 : [1, 2]}
             camera={{ position: [0, 0, 8], fov: 50 }}
