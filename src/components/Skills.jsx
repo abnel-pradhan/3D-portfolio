@@ -1,6 +1,6 @@
 import React, { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float } from "@react-three/drei";
+import { Float, Text } from "@react-three/drei";
 import * as THREE from "three";
 import { motion } from "framer-motion";
 
@@ -17,34 +17,33 @@ const SKILL_WORDS = [
   { text: "THREE.JS", color: "#ffffff" },
 ];
 
-// Safe 3D word rendered as a flat plane with a colored glow — no font file needed
-function OrbitWord({ color, radius, speed, offset, y }) {
+// True 3D Text that orbits around the center
+function OrbitWord({ text, color, radius, speed, offset, y }) {
   const ref = useRef();
-  const planeColor = useMemo(() => new THREE.Color(color), [color]);
 
   useFrame((state) => {
     const t = state.clock.elapsedTime * speed + offset;
     if (ref.current) {
+      // Move in a circle
       ref.current.position.x = Math.cos(t) * radius;
       ref.current.position.z = Math.sin(t) * radius;
+      // Make the text face outward as it spins
       ref.current.rotation.y = -t + Math.PI / 2;
     }
   });
 
   return (
     <group ref={ref} position={[0, y, 0]}>
-      <mesh>
-        <boxGeometry args={[1.2, 0.3, 0.05]} />
-        <meshStandardMaterial
-          color={planeColor}
-          emissive={planeColor}
-          emissiveIntensity={color === "#FF3300" ? 0.8 : 0.2}
-          metalness={0.5}
-          roughness={0.3}
-          transparent
-          opacity={0.85}
-        />
-      </mesh>
+      <Text
+        fontSize={0.35}
+        color={color}
+        anchorX="center"
+        anchorY="middle"
+        outlineWidth={0.01}
+        outlineColor="#000000"
+      >
+        {text}
+      </Text>
     </group>
   );
 }
@@ -138,18 +137,7 @@ export default function Skills({ isMobile }) {
           <div className="absolute top-3 left-3 text-[10px] uppercase tracking-[0.3em] text-[color:var(--muted)] font-mono z-10">
             ▲ ORBITAL/STACK
           </div>
-          {/* Skill labels overlay */}
-          <div className="absolute inset-0 z-10 pointer-events-none flex flex-wrap items-center justify-center gap-3 p-8 opacity-0 group-hover:opacity-100">
-            {SKILL_WORDS.map((w) => (
-              <span
-                key={w.text}
-                className="font-display text-xs md:text-sm uppercase tracking-widest"
-                style={{ color: w.color }}
-              >
-                {w.text}
-              </span>
-            ))}
-          </div>
+          
           <Canvas
             dpr={isMobile ? 1 : [1, 2]}
             camera={{ position: [0, 0, 8], fov: 50 }}
@@ -157,6 +145,7 @@ export default function Skills({ isMobile }) {
           >
             <Scene />
           </Canvas>
+
           <div className="absolute bottom-3 right-3 text-[10px] uppercase tracking-[0.3em] text-[color:var(--accent)] font-mono z-10">
             ORBITAL VIEW
           </div>
