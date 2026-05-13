@@ -10,8 +10,8 @@ const PROJECTS = [
     desc: "My own learn & earn platform. Users learn skills, complete missions, and earn rewards. Built end-to-end — design to deploy.",
     stack: ["React", "Node", "MongoDB", "AI"],
     cover:
-      "https://images.unsplash.com/photo-1649326995808-53a45888fde3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwzfHxkYXJrJTIwbW9kZSUyMDNkJTIwYWJzdHJhY3QlMjBnZW9tZXRyeXxlbnwwfHx8fDE3NzgxMzY2ODd8MA&ixlib=rb-4.1.0&q=85",
-    href: "#",
+      "newarprime-bg.png",
+    href: "https://www.newarprime.in/",
   },
   {
     id: "p2",
