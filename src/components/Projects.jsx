@@ -4,41 +4,45 @@ import { ArrowUpRight } from "lucide-react";
 
 const PROJECTS = [
   {
-    id: "01",
-    label: "FLAGSHIP / 2026",
-    title: "NEWARPRIME",
-    description: "My own learn & earn platform. Users learn skills, complete missions, and earn rewards. Built end-to-end — design to deploy.",
-    tags: ["REACT", "NODE.JS", "MONGODB", "FULL-STACK"],
-    link: "https://newarprime.in",
-    image: "/newarprime-bg.png" // We will update these image links next!
+    id: "p1",
+    name: "NewarPrime",
+    tag: "FLAGSHIP / 2026",
+    desc: "My own learn & earn platform. Users learn skills, complete missions, and earn rewards. Built end-to-end — design to deploy.",
+    stack: ["React", "Node", "MongoDB", "AI"],
+    cover:
+      "https://images.unsplash.com/photo-1649326995808-53a45888fde3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwzfHxkYXJrJTIwbW9kZSUyMDNkJTIwYWJzdHJhY3QlMjBnZW9tZXRyeXxlbnwwfHx8fDE3NzgxMzY2ODd8MA&ixlib=rb-4.1.0&q=85",
+    href: "#",
   },
   {
-    id: "02",
-    label: "COMPUTER VISION",
-    title: "3D AI VIRTUAL PAINTER",
-    description: "An interactive drawing tool powered by AI. Uses advanced hand-tracking to let users paint on a digital canvas using just their fingers in mid-air.",
-    tags: ["PYTHON", "OPENCV", "MEDIAPIPE", "AI"],
-    link: "#",
-    image: "/painter-bg.jpg"
+    id: "p2",
+    name: "E-Commerce Platform",
+    tag: "FULL-STACK",
+    desc: "Production-ready storefront with product management, auth, cart and a smooth checkout flow.",
+    stack: ["React", "Node.js", "MongoDB"],
+    cover:
+      "https://images.unsplash.com/photo-1729459101598-9baa041bd27b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHw0fHxkYXJrJTIwbW9kZSUyMDNkJTIwYWJzdHJhY3QlMjBnZW9tZXRyeXxlbnwwfHx8fDE3NzgxMzY2ODd8MA&ixlib=rb-4.1.0&q=85",
+    href: "#",
   },
   {
-    id: "03",
-    label: "HACKATHON BUILD",
-    title: "WORKSPACE AGENT",
-    description: "An autonomous AI agent built for the Google AI Hackathon. Integrates with Google Gemini to automatically manage calendar events and email tasks.",
-    tags: ["GEMINI AI", "NODE.JS", "API"],
-    link: "#",
-    image: "/agent-bg.jpg"
+    id: "p3",
+    name: "Real-time Chat App",
+    tag: "REALTIME",
+    desc: "Low-latency WebSocket chat. Rooms, presence, typing indicators — instant messaging done right.",
+    stack: ["Vue.js", "Socket.IO", "Express"],
+    cover:
+      "https://images.unsplash.com/photo-1720962158789-9389a4f399da?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwzfHxkYXJrJTIwdGVjaCUyMHVpJTIwZGFzaGJvYXJkfGVufDB8fHx8MTc3ODEzNjY5MXww&ixlib=rb-4.1.0&q=85",
+    href: "#",
   },
   {
-    id: "04",
-    label: "BACKEND ARCHITECTURE",
-    title: "PRO REST API",
-    description: "A professional-grade REST API featuring secure routing, custom middleware, and robust request handling for scalable applications.",
-    tags: ["NODE.JS", "EXPRESS", "BACKEND"],
-    link: "#",
-    image: "/api-bg.jpg"
-  }
+    id: "p4",
+    name: "Data Visualization Dashboard",
+    tag: "DATA-VIZ",
+    desc: "Clean dashboard for complex datasets. Interactive D3.js charts, filters, and tooltips.",
+    stack: ["HTML/CSS/JS", "D3.js", "Tailwind"],
+    cover:
+      "https://images.unsplash.com/photo-1764258560296-04404549a022?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwyfHxkYXJrJTIwbW9kZSUyMDNkJTIwYWJzdHJhY3QlMjBnZW9tZXRyeXxlbnwwfHx8fDE3NzgxMzY2ODd8MA&ixlib=rb-4.1.0&q=85",
+    href: "#",
+  },
 ];
 
 function TiltCard({ p, index }) {
